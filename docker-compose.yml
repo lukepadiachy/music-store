@@ -10,6 +10,7 @@ services:
       - sqlserver 
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
     networks:
       - music-network
     restart: on-failure
