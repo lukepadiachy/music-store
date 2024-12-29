@@ -51,6 +51,13 @@ app.MapGet("/albums", async (AlbumContext db) =>
     return await db.Albums.ToListAsync();
 });
 
+app.MapPost("/albums", async (Album album, AlbumContext db) =>
+{
+    db.Albums.Add(album);
+    await db.SaveChangesAsync();
+    return Results.Created($"/albums/{album.Id}", album);
+});
+
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
